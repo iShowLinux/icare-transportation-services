@@ -1,0 +1,88 @@
+/* Service detail cards */
+.service-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-12);
+  align-items: center;
+  padding: var(--sp-12) 0;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.service-detail:last-of-type { border-bottom: none; }
+
+.service-detail.reverse { direction: rtl; }
+.service-detail.reverse > * { direction: ltr; }
+
+.service-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  max-width: 320px;
+  margin: auto;
+  background: linear-gradient(135deg, var(--clr-bg-alt), var(--clr-teal-light));
+  border-radius: var(--radius-xl);
+  font-size: 6rem;
+  color: var(--clr-teal);
+}
+
+.service-text h2 {
+  margin-bottom: var(--sp-4);
+}
+
+.service-text p {
+  color: var(--clr-text-muted);
+  margin-bottom: var(--sp-5);
+}
+
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+}
+
+.service-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--fs-base);
+  color: var(--clr-text);
+}
+
+.service-list li i {
+  color: var(--clr-success);
+  flex-shrink: 0;
+  font-size: var(--fs-sm);
+}
+
+/* Appointment matrix */
+.appt-matrix {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--sp-3);
+}
+
+.appt-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  color: var(--clr-text);
+}
+
+.appt-item i {
+  color: var(--clr-teal);
+  width: 16px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .service-detail         { grid-template-columns: 1fr; }
+  .service-detail.reverse { direction: ltr; }
+  .service-icon-wrap      { max-width: 200px; font-size: 4rem; padding: var(--sp-8); }
+}

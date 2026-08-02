@@ -1,0 +1,112 @@
+/* Rates page */
+.rates-intro {
+  text-align: center;
+  max-width: 660px;
+  margin: 0 auto var(--sp-12);
+}
+
+.rates-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+  margin-bottom: var(--sp-12);
+}
+
+.rate-card {
+  background: var(--clr-white);
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-8);
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  transition: var(--ease);
+}
+
+.rate-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.rate-card i {
+  font-size: 2.5rem;
+  color: var(--clr-teal);
+  margin-bottom: var(--sp-4);
+  display: block;
+}
+
+.rate-card h3 {
+  font-size: var(--fs-xl);
+  color: var(--clr-text);
+  margin-bottom: var(--sp-3);
+}
+
+.rate-card p {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  line-height: var(--lh-base);
+}
+
+/* Policy blocks */
+.policy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-6);
+  margin-top: var(--sp-8);
+}
+
+.policy-card {
+  background: var(--clr-bg);
+  border-left: 4px solid var(--clr-accent);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: var(--sp-6);
+}
+
+.policy-card h4 {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--fs-lg);
+  margin-bottom: var(--sp-3);
+}
+
+.policy-card h4 i { color: var(--clr-accent); }
+
+.policy-card p {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  line-height: var(--lh-base);
+}
+
+/* Quote CTA */
+.quote-cta {
+  text-align: center;
+  background: linear-gradient(135deg, var(--clr-bg-alt), var(--clr-teal-light));
+  border-radius: var(--radius-xl);
+  padding: var(--sp-12);
+  margin-top: var(--sp-12);
+  border: 1px solid var(--clr-border);
+}
+
+.quote-cta h3 {
+  font-size: var(--fs-2xl);
+  color: var(--clr-text);
+  margin-bottom: var(--sp-3);
+}
+
+.quote-cta p {
+  color: var(--clr-text-muted);
+  margin-bottom: var(--sp-6);
+  font-size: var(--fs-lg);
+}
+
+.quote-cta .btn-group {
+  display: flex;
+  gap: var(--sp-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .rates-grid  { grid-template-columns: 1fr; }
+  .policy-grid { grid-template-columns: 1fr; }
+}

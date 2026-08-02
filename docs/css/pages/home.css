@@ -1,0 +1,89 @@
+/* Appointment tags grid */
+.appt-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  justify-content: center;
+}
+
+.appt-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--clr-white);
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text);
+  transition: var(--ease);
+}
+
+.appt-tag:hover {
+  border-color: var(--clr-primary);
+  color: var(--clr-primary);
+  background: var(--clr-bg);
+  transform: translateY(-2px);
+}
+
+.appt-tag i { color: var(--clr-teal); }
+
+/* Hours & area split */
+.hours-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-12);
+  align-items: start;
+}
+
+.hours-block h3,
+.area-block h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--fs-2xl);
+  color: var(--clr-text);
+  margin-bottom: var(--sp-6);
+}
+
+.hours-block h3 i,
+.area-block h3 i { color: var(--clr-accent); }
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hours-table td {
+  padding: var(--sp-3) 0;
+  font-size: var(--fs-base);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.hours-table td:first-child {
+  color: var(--clr-text);
+  font-weight: var(--fw-medium);
+}
+
+.hours-table td:last-child {
+  color: var(--clr-text-muted);
+  text-align: right;
+}
+
+.area-block p {
+  font-size: var(--fs-base);
+  color: var(--clr-text-muted);
+  line-height: var(--lh-base);
+  margin-bottom: var(--sp-4);
+}
+
+.area-note {
+  font-size: var(--fs-sm) !important;
+  color: #8A95A3 !important;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .hours-grid { grid-template-columns: 1fr; gap: var(--sp-8); }
+}
