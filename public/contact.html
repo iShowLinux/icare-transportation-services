@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact iCare Transportation Services to book a ride or request a free quote. Call (843) 227-4621 or fill out our online form.">
+  <title>Contact Us | iCare Transportation Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/pages/contact.css">
+</head>
+<body>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="iCare Transportation Services Home">
+        <span class="logo-icon"><i class="fas fa-heart-pulse"></i></span>
+        <div class="logo-text">
+          <span class="logo-name">iCare</span>
+          <span class="logo-sub">Transportation Services</span>
+        </div>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a href="index.html"    class="nav-link">Home</a></li>
+          <li><a href="about.html"    class="nav-link">About Us</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="rates.html"    class="nav-link">Rates</a></li>
+          <li><a href="faq.html"      class="nav-link">FAQs</a></li>
+          <li><a href="contact.html"  class="nav-link active">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="contact.html" class="btn btn-accent header-cta">Book a Ride</a>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a><span>/</span><span aria-current="page">Contact</span>
+        </nav>
+        <h1>Book a Ride or Get a Quote</h1>
+        <p>Fill out the form below or call us directly. We'll confirm your quote quickly.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-layout">
+
+        <!-- FORM -->
+        <div class="contact-form-wrap">
+          <h2>Request Transportation</h2>
+          <p>All fields marked with <span style="color:var(--clr-accent)">*</span> are required. We'll respond within 1 business hour during office hours.</p>
+
+          <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name <span class="required">*</span></label>
+                <input type="text" id="first-name" name="first_name" class="form-control" placeholder="Jane" required autocomplete="given-name">
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name <span class="required">*</span></label>
+                <input type="text" id="last-name" name="last_name" class="form-control" placeholder="Doe" required autocomplete="family-name">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="(843) 555-0123" required autocomplete="tel">
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="jane@example.com" autocomplete="email">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="service-type">Service Type <span class="required">*</span></label>
+              <select id="service-type" name="service_type" class="form-control" required>
+                <option value="" disabled selected>Select a service type…</option>
+                <option value="ambulatory">Ambulatory Transport</option>
+                <option value="wheelchair">Wheelchair Transport</option>
+                <option value="facility">Facility / Partnership Inquiry</option>
+                <option value="private">Private Pay</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="pickup">Pickup Address <span class="required">*</span></label>
+              <input type="text" id="pickup" name="pickup_address" class="form-control" placeholder="123 Main St, Charleston, SC 29401" required>
+            </div>
+
+            <div class="form-group">
+              <label for="destination">Destination / Drop-off <span class="required">*</span></label>
+              <input type="text" id="destination" name="destination" class="form-control" placeholder="MUSC Health, 169 Ashley Ave, Charleston" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="trip-date">Date Needed <span class="required">*</span></label>
+                <input type="date" id="trip-date" name="trip_date" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="pickup-time">Pickup Time <span class="required">*</span></label>
+                <input type="time" id="pickup-time" name="pickup_time" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Special Instructions or Notes</label>
+              <textarea id="notes" name="notes" class="form-control" placeholder="Wheelchair dimensions, standby wait request, accessibility needs, round trip details, etc."></textarea>
+            </div>
+
+            <div class="form-notice">
+              <i class="fas fa-info-circle"></i>
+              <span>Submitting this form is not a confirmed booking. A team member will contact you to confirm availability and provide your quote.</span>
+            </div>
+
+            <button type="submit" class="btn btn-accent btn-lg" style="width:100%; justify-content:center; margin-top: var(--sp-2);">
+              Send Request &nbsp;<i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+
+          <div class="form-success" id="form-success">
+            <i class="fas fa-circle-check"></i>
+            <h3>Request Received!</h3>
+            <p>Thank you! We'll reach out within 1 business hour to confirm your quote and availability. If it's urgent, please call <a href="tel:8432274621">(843) 227-4621</a> directly.</p>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="contact-sidebar">
+
+          <div class="info-card">
+            <h3><i class="fas fa-address-book"></i> Contact Info</h3>
+            <div class="info-list">
+              <div class="info-item">
+                <div class="info-icon"><i class="fas fa-phone"></i></div>
+                <div class="info-item-text">
+                  <small>Phone</small>
+                  <a href="tel:8432274621">(843) 227-4621</a>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                <div class="info-item-text">
+                  <small>Email</small>
+                  <a href="mailto:contact@icaretransportsc.com">contact@icaretransportsc.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3><i class="fas fa-clock"></i> Office Hours</h3>
+            <table class="hours-mini">
+              <tbody>
+                <tr><td>Mon – Thu</td><td>6:00 AM – 4:00 PM</td></tr>
+                <tr><td>Friday</td><td>7:00 AM – 12:00 PM</td></tr>
+                <tr><td>Saturday</td><td>By Appointment</td></tr>
+                <tr><td>Sunday</td><td>By Appointment</td></tr>
+                <tr><td>Holidays</td><td>By Appointment</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="info-card">
+            <h3><i class="fas fa-circle-info"></i> Good to Know</h3>
+            <div class="info-list">
+              <div class="info-item">
+                <div class="info-icon"><i class="fas fa-calendar-check"></i></div>
+                <div class="info-item-text">
+                  <small>Booking</small>
+                  <span>Book at least 24 hrs in advance</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon"><i class="fas fa-calendar-xmark"></i></div>
+                <div class="info-item-text">
+                  <small>Cancellations</small>
+                  <span>24-hour notice required</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon"><i class="fas fa-tag"></i></div>
+                <div class="info-item-text">
+                  <small>Quotes</small>
+                  <span>Free, no obligation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo logo--light">
+          <span class="logo-icon"><i class="fas fa-heart-pulse"></i></span>
+          <div class="logo-text"><span class="logo-name">iCare</span><span class="logo-sub">Transportation Services</span></div>
+        </a>
+        <p class="footer-tagline">"Call iCare, We'll Get You There!"</p>
+        <div class="footer-badges">
+          <span class="badge"><i class="fas fa-medal"></i> Veteran Owned</span>
+          <span class="badge"><i class="fas fa-certificate"></i> SC PSC Certified</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="rates.html">Rates</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <ul class="contact-list">
+          <li><i class="fas fa-phone"></i><a href="tel:8432274621">(843) 227-4621</a></li>
+          <li><i class="fas fa-envelope"></i><a href="mailto:contact@icaretransportsc.com">contact@icaretransportsc.com</a></li>
+        </ul>
+        <h4 class="mt-6">Office Hours</h4>
+        <p>Mon–Thu: 6:00 AM – 4:00 PM<br>Fri: 7:00 AM – 12:00 PM<br>Weekends &amp; Holidays: By Appointment</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2025 iCare Transportation Services. All rights reserved. &nbsp;|&nbsp; SC PSC Licensed &amp; Insured</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/pages/contact.js"></script>
+</body>
+</html>
