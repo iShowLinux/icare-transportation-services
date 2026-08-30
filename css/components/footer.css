@@ -12,8 +12,21 @@
 }
 
 /* Brand column */
-.logo--light .logo-name  { color: var(--clr-white); }
-.logo--light .logo-sub   { color: rgba(255,255,255,0.55); }
+/* Logo source is a JPG with a solid white background, so on the dark
+   footer we render it on an intentional white "chip" (rounded, padded)
+   instead of letting it appear as a stray white rectangle. */
+.logo--light {
+  display: inline-block;
+}
+
+.logo--light .logo-img {
+  background: var(--clr-white);
+  padding: var(--sp-2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  height: 52px;
+  width: auto;
+}
 
 .footer-tagline {
   margin-top: var(--sp-4);
