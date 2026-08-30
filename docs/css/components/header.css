@@ -30,14 +30,13 @@
 }
 
 .logo-img {
-  height: 52px;
+  height: 56px;
   width: auto;
   display: block;
-  border-radius: var(--radius-md);
 }
 
 @media (max-width: 600px) {
-  .logo-img { height: 44px; }
+  .logo-img { height: 46px; }
 }
 
 /* Nav */
