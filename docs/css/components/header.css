@@ -30,13 +30,13 @@
 }
 
 .logo-img {
-  height: 96px;
+  height: 88px;
   width: auto;
   display: block;
 }
 
 @media (max-width: 600px) {
-  .logo-img { height: 64px; }
+  .logo-img { height: 60px; }
 }
 
 /* Nav */
