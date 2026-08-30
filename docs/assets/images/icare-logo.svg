@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 132" role="img" aria-label="iCare Transportation Services">
+  <defs>
+    <linearGradient id="bshield" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#163960"/>
+      <stop offset="1" stop-color="#0F8EA3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ===== Badge ===== -->
+  <rect x="8" y="8" width="116" height="116" rx="28" fill="url(#bshield)"/>
+  <rect x="8" y="8" width="116" height="116" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2"/>
+
+  <!-- heartbeat / pulse line (medical transport) -->
+  <polyline points="30,76 50,76 62,52 76,100 92,64 106,76 116,76"
+            fill="none" stroke="#FFFFFF" stroke-width="6"
+            stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- accent spark at the pulse peak -->
+  <circle cx="62" cy="52" r="6.5" fill="#E8751A"/>
+  <!-- small location pin (destination) -->
+  <path d="M88 40 c0 -7 11 -7 11 0 c0 5 -5.5 9 -5.5 9 s-5.5 -4 -5.5 -9 z"
+        fill="#FFFFFF" fill-opacity="0.9"/>
+  <circle cx="93.5" cy="40" r="2.4" fill="#0F8EA3"/>
+
+  <!-- ===== Wordmark ===== -->
+  <text x="150" y="68" font-family="Poppins, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="54" font-weight="800" fill="#163960" letter-spacing="-1">iCare</text>
+  <text x="152" y="96" font-family="Poppins, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="16" font-weight="600" fill="#0F8EA3" letter-spacing="3">TRANSPORTATION SERVICES</text>
+</svg>
