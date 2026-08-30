@@ -12,13 +12,18 @@
 }
 
 /* Brand column */
-/* The logo is now a transparent-background SVG, so on the dark footer it
-   can sit directly on the navy with no chip needed. */
+/* The logo is a raster PNG with a solid white background, so on the dark
+   footer we render it on an intentional white "chip" (rounded, padded)
+   instead of letting it appear as a stray white rectangle. */
 .logo--light {
   display: inline-block;
 }
 
 .logo--light .logo-img {
+  background: var(--clr-white);
+  padding: var(--sp-2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   height: 56px;
   width: auto;
 }
