@@ -16,8 +16,8 @@
   display: flex;
   align-items: center;
   gap: var(--sp-6);
-  padding-top: var(--sp-4);
-  padding-bottom: var(--sp-4);
+  padding-top: var(--sp-5);
+  padding-bottom: var(--sp-5);
 }
 
 /* Logo */
@@ -30,13 +30,13 @@
 }
 
 .logo-img {
-  height: 72px;
+  height: 96px;
   width: auto;
   display: block;
 }
 
 @media (max-width: 600px) {
-  .logo-img { height: 56px; }
+  .logo-img { height: 64px; }
 }
 
 /* Nav */
