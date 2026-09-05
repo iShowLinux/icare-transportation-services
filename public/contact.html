@@ -56,7 +56,15 @@
           <h2>Request Transportation</h2>
           <p>All fields marked with <span style="color:var(--clr-accent)">*</span> are required. We'll respond within 1 business hour during office hours.</p>
 
-          <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+
+            <!-- Web3Forms delivery config. The destination inbox (ceo@getauctionsnow.com)
+                 is bound to this access key on web3forms.com — replace the value below. -->
+            <input type="hidden" name="access_key" value="895bfd09-3941-44ae-90b8-85260d916033">
+            <input type="hidden" name="subject" value="New Ride Request — iCare Transportation Website">
+            <input type="hidden" name="from_name" value="iCare Transportation Website">
+            <!-- Spam honeypot: hidden from people, bots fill it and get silently rejected -->
+            <input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off">
 
             <div class="form-row">
               <div class="form-group">
