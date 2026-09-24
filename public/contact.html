@@ -83,8 +83,8 @@
                 <input type="tel" id="phone" name="phone" class="form-control" placeholder="(843) 555-0123" required autocomplete="tel">
               </div>
               <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="jane@example.com" autocomplete="email">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="jane@example.com" required autocomplete="email">
               </div>
             </div>
 
@@ -95,24 +95,24 @@
                 <option value="ambulatory">Ambulatory Transport</option>
                 <option value="wheelchair">Wheelchair Transport</option>
                 <option value="facility">Facility / Partnership Inquiry</option>
-                <option value="private">Private Pay</option>
-                <option value="other">Other / Not Sure</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="pickup">Pickup Address <span class="required">*</span></label>
-              <input type="text" id="pickup" name="pickup_address" class="form-control" placeholder="123 Main St, Charleston, SC 29401" required>
+              <input type="text" id="pickup" name="pickup_address" class="form-control" placeholder="123 Main St, Charleston, SC 29401" required autocomplete="off">
+              <div id="pickup-suggestions" class="autocomplete-suggestions"></div>
             </div>
 
             <div class="form-group">
               <label for="destination">Destination / Drop-off <span class="required">*</span></label>
-              <input type="text" id="destination" name="destination" class="form-control" placeholder="MUSC Health, 169 Ashley Ave, Charleston" required>
+              <input type="text" id="destination" name="destination" class="form-control" placeholder="MUSC Health, 169 Ashley Ave, Charleston" required autocomplete="off">
+              <div id="destination-suggestions" class="autocomplete-suggestions"></div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="trip-date">Date Needed <span class="required">*</span></label>
+                <label for="trip-date">Pickup date <span class="required">*</span></label>
                 <input type="date" id="trip-date" name="trip_date" class="form-control" required>
               </div>
               <div class="form-group">
@@ -170,8 +170,7 @@
             <h3><i class="fas fa-clock"></i> Office Hours</h3>
             <table class="hours-mini">
               <tbody>
-                <tr><td>Mon – Thu</td><td>6:00 AM – 4:00 PM</td></tr>
-                <tr><td>Friday</td><td>7:00 AM – 12:00 PM</td></tr>
+                <tr><td>Monday – Friday</td><td>7:00 AM – 4:00 PM</td></tr>
                 <tr><td>Saturday</td><td>By Appointment</td></tr>
                 <tr><td>Sunday</td><td>By Appointment</td></tr>
                 <tr><td>Holidays</td><td>By Appointment</td></tr>
@@ -186,7 +185,7 @@
                 <div class="info-icon"><i class="fas fa-calendar-check"></i></div>
                 <div class="info-item-text">
                   <small>Booking</small>
-                  <span>Book at least 24 hrs in advance</span>
+                  <span>Book at least 72 hrs in advance</span>
                 </div>
               </div>
               <div class="info-item">
@@ -242,7 +241,7 @@
           <li><i class="fas fa-envelope"></i><a href="mailto:contact@icaretransportsc.com">contact@icaretransportsc.com</a></li>
         </ul>
         <h4 class="mt-6">Office Hours</h4>
-        <p>Mon–Thu: 6:00 AM – 4:00 PM<br>Fri: 7:00 AM – 12:00 PM<br>Weekends &amp; Holidays: By Appointment</p>
+        <p>Mon–Fri: 7:00 AM – 4:00 PM<br>Weekends &amp; Holidays: By Appointment</p>
       </div>
     </div>
     <div class="footer-bottom">

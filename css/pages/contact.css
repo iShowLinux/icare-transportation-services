@@ -122,3 +122,46 @@
   .contact-layout { grid-template-columns: 1fr; }
   .contact-form-wrap { padding: var(--sp-6); }
 }
+
+/* Address autocomplete suggestions */
+.autocomplete-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  margin-top: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: var(--shadow-sm);
+  display: none;
+}
+
+.autocomplete-suggestions.active {
+  display: block;
+}
+
+.autocomplete-suggestion {
+  padding: var(--sp-3) var(--sp-4);
+  cursor: pointer;
+  font-size: var(--fs-sm);
+  color: var(--clr-text);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.autocomplete-suggestion:last-child {
+  border-bottom: none;
+}
+
+.autocomplete-suggestion:hover,
+.autocomplete-suggestion.selected {
+  background: var(--clr-bg);
+  color: var(--clr-primary);
+}
+
+.form-group {
+  position: relative;
+}
