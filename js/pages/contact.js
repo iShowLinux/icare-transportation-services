@@ -106,15 +106,19 @@ if (form) {
         method: 'POST',
         body: new FormData(form),
         headers: { Accept: 'application/json' },
+        redirect: 'follow'
       });
 
-      if (res.ok) {
+      const data = await res.json();
+
+      if (res.ok || data.success) {
         form.style.display = 'none';
         if (successCard) successCard.style.display = 'block';
       } else {
-        throw new Error('Server error');
+        throw new Error(data.message || 'Server error');
       }
-    } catch {
+    } catch (error) {
+      console.error('Form submission error:', error);
       submitBtn.disabled = false;
       submitBtn.innerHTML = 'Send Request <i class="fas fa-paper-plane"></i>';
       alert('Something went wrong. Please call us at (843) 227-4621 or try again.');
