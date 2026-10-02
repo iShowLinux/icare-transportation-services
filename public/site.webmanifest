@@ -1,0 +1,13 @@
+{
+  "name": "iCare Transportation Services",
+  "short_name": "iCare Transport",
+  "description": "Non-emergency medical transportation in South Carolina. Veteran-owned, SC licensed, fully insured.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#163960",
+  "theme_color": "#163960",
+  "icons": [
+    { "src": "favicon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "favicon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
