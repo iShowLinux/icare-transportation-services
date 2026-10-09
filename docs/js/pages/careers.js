@@ -308,12 +308,19 @@ if (form) {
       console.log(`${key}: ${value}`);
     }
 
+    // Web3Forms' AJAX API requires a JSON body with Content-Type: application/json.
+    // Sending FormData (multipart) makes the API respond with an HTML success page
+    // instead of JSON, so res.json() throws and the form appears broken.
     try {
+      const payload = Object.fromEntries(new FormData(form).entries());
+
       const res = await fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
-        redirect: 'follow'
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
       });
 
       console.log('Response status:', res.status);
