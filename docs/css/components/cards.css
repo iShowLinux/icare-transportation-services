@@ -35,26 +35,27 @@
 
 /* Featured card */
 .card--featured {
-  background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-light));
-  color: var(--clr-white);
-  border-color: transparent;
+  background: linear-gradient(135deg, var(--clr-bg-alt), var(--clr-bg));
+  color: var(--clr-text);
+  border-color: var(--clr-accent);
+  border-width: 2px;
 }
 
 .card--featured .card-icon {
-  background: rgba(255,255,255,0.15);
-  color: var(--clr-white);
-}
-
-.card--featured:hover .card-icon {
   background: var(--clr-accent);
   color: var(--clr-white);
 }
 
-.card--featured h3,
-.card--featured p  { color: var(--clr-white); }
+.card--featured:hover .card-icon {
+  background: var(--clr-accent-hover);
+  color: var(--clr-white);
+}
 
-.card--featured .card-link { color: rgba(255,255,255,0.85); }
-.card--featured .card-link:hover { color: var(--clr-white); }
+.card--featured h3,
+.card--featured p  { color: var(--clr-text); }
+
+.card--featured .card-link { color: var(--clr-primary); }
+.card--featured .card-link:hover { color: var(--clr-accent); }
 
 /* Card content */
 .card h3 {

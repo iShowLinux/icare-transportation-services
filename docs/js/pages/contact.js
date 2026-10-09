@@ -1,4 +1,4 @@
-import { validateField, setupLiveValidation } from '../components/forms.js';
+import { validateField, validateRadioGroup, setupLiveValidation } from '../components/forms.js';
 
 const form = document.getElementById('contact-form');
 const successCard = document.getElementById('form-success');
@@ -85,6 +85,31 @@ function setupAutocomplete(inputId, suggestionsId) {
 setupAutocomplete('pickup', 'pickup-suggestions');
 setupAutocomplete('destination', 'destination-suggestions');
 
+// Handle trip type selection - show/hide return date/time
+const tripTypeRadios = document.querySelectorAll('input[name="trip_type"]');
+const returnDatetimeRow = document.getElementById('return-datetime-row');
+const returnDate = document.getElementById('return-date');
+const returnTime = document.getElementById('return-time');
+
+function updateReturnFields() {
+  const isRoundTrip = document.querySelector('input[name="trip_type"]:checked')?.value === 'round_trip';
+  if (isRoundTrip) {
+    returnDatetimeRow.style.display = 'grid';
+    returnDate.required = true;
+    returnTime.required = true;
+  } else {
+    returnDatetimeRow.style.display = 'none';
+    returnDate.required = false;
+    returnTime.required = false;
+    returnDate.value = '';
+    returnTime.value = '';
+  }
+}
+
+tripTypeRadios.forEach(radio => {
+  radio.addEventListener('change', updateReturnFields);
+});
+
 if (form) {
   setupLiveValidation(form);
 
@@ -93,35 +118,72 @@ if (form) {
 
     const inputs = form.querySelectorAll('.form-control');
     let valid = true;
-    inputs.forEach(input => { if (!validateField(input)) valid = false; });
-    if (!valid) return;
+    inputs.forEach(input => {
+      // Skip validation for hidden/optional fields
+      if (input.offsetParent === null && !input.required) return;
+      if (!validateField(input)) valid = false;
+    });
+
+    // Validate radio group
+    if (!validateRadioGroup('trip_type')) valid = false;
+
+    // Validate return date/time if round trip
+    const isRoundTrip = document.querySelector('input[name="trip_type"]:checked')?.value === 'round_trip';
+    if (isRoundTrip) {
+      if (!validateField(returnDate)) valid = false;
+      if (!validateField(returnTime)) valid = false;
+    }
+
+    if (!valid) {
+      console.log('Form validation failed');
+      return;
+    }
+
+    console.log('Form validation passed, submitting...');
 
     const submitBtn = form.querySelector('[type="submit"]');
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
 
-    // Replace the action URL with your form service endpoint (e.g. Formspree, Netlify Forms)
+    // Log form data for debugging
+    const formData = new FormData(form);
+    console.log('Form data being sent:');
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
+
+    // Web3Forms' AJAX API requires a JSON body with Content-Type: application/json.
+    // Sending FormData (multipart) makes the API respond with an HTML success page
+    // instead of JSON, so res.json() throws and the form appears broken.
     try {
+      const payload = Object.fromEntries(new FormData(form).entries());
+
       const res = await fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
-        redirect: 'follow'
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
       });
 
+      console.log('Response status:', res.status);
+      console.log('Response ok:', res.ok);
+
       const data = await res.json();
+      console.log('Response data:', data);
 
       if (res.ok || data.success) {
         form.style.display = 'none';
         if (successCard) successCard.style.display = 'block';
       } else {
-        throw new Error(data.message || 'Server error');
+        throw new Error(data.message || `Server error: ${res.status}`);
       }
     } catch (error) {
       console.error('Form submission error:', error);
       submitBtn.disabled = false;
       submitBtn.innerHTML = 'Send Request <i class="fas fa-paper-plane"></i>';
-      alert('Something went wrong. Please call us at (843) 227-4621 or try again.');
+      alert(`Something went wrong: ${error.message}. Please call us at (843) 227-4621 or try again.`);
     }
   });
 }

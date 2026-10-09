@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Today's date: Thursday, 2026-10-08 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -147,6 +148,29 @@
             </div>
 
             <div class="form-group">
+              <fieldset>
+                <legend>Trip Type <span class="required">*</span></legend>
+                <div class="radio-group">
+                  <label class="radio-label">
+                    <input type="radio" id="trip-type-oneway" name="trip_type" value="one_way" checked>
+                    <span class="radio-custom"></span>
+                    <span>One Way</span>
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" id="trip-type-roundtrip" name="trip_type" value="round_trip">
+                    <span class="radio-custom"></span>
+                    <span>Round Trip</span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="form-group">
+              <label for="accompanying-passengers">Accompanying Passengers</label>
+              <input type="number" id="accompanying-passengers" name="passengers" class="form-control" placeholder="0" min="0">
+            </div>
+
+            <div class="form-group">
               <label for="pickup">Pickup Address <span class="required">*</span></label>
               <input type="text" id="pickup" name="pickup_address" class="form-control" placeholder="123 Main St, Charleston, SC 29401" required autocomplete="off">
               <div id="pickup-suggestions" class="autocomplete-suggestions"></div>
@@ -166,6 +190,17 @@
               <div class="form-group">
                 <label for="pickup-time">Pickup Time <span class="required">*</span></label>
                 <input type="time" id="pickup-time" name="pickup_time" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="form-row" id="return-datetime-row" style="display: none;">
+              <div class="form-group">
+                <label for="return-date">Return Date <span class="required">*</span></label>
+                <input type="date" id="return-date" name="return_date" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="return-time">Return Time <span class="required">*</span></label>
+                <input type="time" id="return-time" name="return_time" class="form-control">
               </div>
             </div>
 
