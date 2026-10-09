@@ -163,7 +163,7 @@
                 <li>Document trips and passenger information</li>
               </ul>
             </div>
-            <a href="#application-form" class="btn btn-accent">Apply Now</a>
+            <a href="#apply" class="btn btn-accent">Apply Now</a>
           </div>
 
           <div class="position-card">
@@ -191,14 +191,14 @@
                 <li>Handle scheduling changes and emergencies</li>
               </ul>
             </div>
-            <a href="#application-form" class="btn btn-accent">Apply Now</a>
+            <a href="#apply" class="btn btn-accent">Apply Now</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- APPLICATION FORM -->
-    <section class="section" id="application-form">
+    <section class="section" id="apply">
       <div class="container">
         <div class="section-header">
           <span class="section-label">Apply Now</span>
@@ -289,7 +289,19 @@
                 <i class="fas fa-clock"></i>
                 <span><strong>Important:</strong> Once the above screening is completed, the applicant has 3 weeks to complete the full application unless an extension is approved by iCare Transportation Leadership.</span>
               </div>
+
+              <!-- Screening gate: must be answered before the application opens -->
+              <div class="screening-actions">
+                <button type="button" id="screening-continue" class="btn btn-accent btn-lg">
+                  Continue to Application &nbsp;<i class="fas fa-arrow-right"></i>
+                </button>
+                <p class="screening-gate-note">All screening questions above must be answered before the application form will open.</p>
+                <div class="screening-gate-error" id="screening-gate-error" role="alert" hidden></div>
+              </div>
             </div>
+
+            <!-- ===== MAIN APPLICATION — hidden until the screening is passed ===== -->
+            <div id="application-body" hidden>
 
             <!-- Section 1: Applicant Information -->
             <div class="form-section">
@@ -1039,6 +1051,8 @@
                 </label>
               </div>
             </div>
+
+            </div><!-- /#application-body -->
 
             <div class="form-notice">
               <i class="fas fa-info-circle"></i>

@@ -5,6 +5,7 @@ const workHistoryContainer = document.getElementById('work-history-container');
 const addWorkHistoryBtn = document.getElementById('add-work-history');
 
 let workHistoryCount = 1;
+let screeningPassed = false;
 
 // Add work history entry
 addWorkHistoryBtn.addEventListener('click', () => {
@@ -86,6 +87,107 @@ workHistoryContainer.addEventListener('click', (e) => {
 if (form) {
   setupLiveValidation(form);
 
+  // ---------- Screening gate ----------
+  // The main application stays hidden until every screening question is
+  // answered and the hard requirements are met.
+  const applicationBody = document.getElementById('application-body');
+  const screeningContinueBtn = document.getElementById('screening-continue');
+  const screeningGateError = document.getElementById('screening-gate-error');
+
+  const GATE_ERRORS = {
+    license: 'A valid driver\u2019s license is required for this position.',
+    background: 'Willingness to undergo a background check is required.',
+    dot: 'Willingness to undergo a DOT Physical and drug screening is required.',
+    violations: 'No more than 2 moving violations in the past 3 years, please.'
+  };
+
+  function showGateError(msg) {
+    if (!screeningGateError) return;
+    screeningGateError.textContent = msg;
+    screeningGateError.hidden = false;
+  }
+
+  function clearGateError() {
+    if (!screeningGateError) return;
+    screeningGateError.hidden = true;
+    screeningGateError.textContent = '';
+  }
+
+  // Live feedback: clear the error as soon as the applicant fixes it
+  ['valid_license', 'background_check', 'dot_physical'].forEach(name => {
+    document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (name === 'valid_license' && radio.value === 'no') {
+          showGateError(GATE_ERRORS.license);
+        } else {
+          clearGateError();
+        }
+      });
+    });
+  });
+
+  if (screeningContinueBtn) {
+    screeningContinueBtn.addEventListener('click', () => {
+      clearGateError();
+
+      // 1. Every screening question must be answered
+      const groups = [
+        { name: 'valid_license',    label: 'Do you have a valid driver\u2019s license?' },
+        { name: 'background_check', label: 'Are you willing to undergo a background check?' },
+        { name: 'dot_physical',     label: 'Are you willing to undergo a DOT Physical?' }
+      ];
+      for (const g of groups) {
+        const chosen = document.querySelector(`input[name="${g.name}"]:checked`);
+        if (!chosen) {
+          showGateError(`Please answer: ${g.label}`);
+          chosen_field_error(g.name);
+          return;
+        }
+      }
+
+      // 2. Hard requirements must be met (matching the server-side rules)
+      const license = document.querySelector('input[name="valid_license"]:checked');
+      if (license.value !== 'yes') { showGateError(GATE_ERRORS.license); return; }
+
+      const bg = document.querySelector('input[name="background_check"]:checked');
+      if (bg.value !== 'yes') { showGateError(GATE_ERRORS.background); return; }
+
+      const dot = document.querySelector('input[name="dot_physical"]:checked');
+      if (dot.value !== 'yes') { showGateError(GATE_ERRORS.dot); return; }
+
+      const violationsInput = document.getElementById('violations');
+      const vCount = parseInt(violationsInput.value, 10);
+      if (violationsInput.value.trim() === '' || isNaN(vCount) || vCount > 2) {
+        showGateError(GATE_ERRORS.violations);
+        violationsInput.classList.add('error');
+        violationsInput.focus();
+        return;
+      }
+      violationsInput.classList.remove('error');
+
+      // Passed — reveal the application
+      screeningPassed = true;
+      applicationBody.hidden = false;
+      screeningContinueBtn.innerHTML = 'Screening Complete &nbsp;<i class="fas fa-circle-check"></i>';
+      screeningContinueBtn.disabled = true;
+      screeningContinueBtn.classList.remove('btn-accent');
+      screeningContinueBtn.classList.add('btn-outline');
+
+      // Reveal + focus the first field of the application
+      const firstField = applicationBody.querySelector('input, select, textarea');
+      if (firstField) firstField.focus();
+
+      applicationBody.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  // Guard: block submit if the gate was never passed
+  function chosen_field_error(name) {
+    const radio = document.querySelector(`input[name="${name}"]`);
+    const fieldset = radio && radio.closest('fieldset');
+    if (fieldset) fieldset.classList.add('error');
+  }
+
   // Add live validation for violations
   const violations = document.getElementById('violations');
   if (violations) {
@@ -111,6 +213,14 @@ if (form) {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Hard guard: the screening must be passed before the application can be submitted
+    if (!screeningPassed) {
+      showGateError('Please complete the screening requirements above before submitting your application.');
+      const sc = document.querySelector('.screening-section');
+      if (sc) sc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
 
     const inputs = form.querySelectorAll('.form-control');
     let valid = true;
