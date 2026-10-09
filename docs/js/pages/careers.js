@@ -156,8 +156,10 @@ if (form) {
       if (dot.value !== 'yes') { showGateError(GATE_ERRORS.dot); return; }
 
       const violationsInput = document.getElementById('violations');
-      const vCount = parseInt(violationsInput.value, 10);
-      if (violationsInput.value.trim() === '' || isNaN(vCount) || vCount > 2) {
+      // A blank field means "0 violations" (matches the placeholder), not "unanswered"
+      const vRaw = violationsInput.value.trim();
+      const vCount = vRaw === '' ? 0 : parseInt(vRaw, 10);
+      if (isNaN(vCount) || vCount < 0 || vCount > 2) {
         showGateError(GATE_ERRORS.violations);
         violationsInput.classList.add('error');
         violationsInput.focus();
