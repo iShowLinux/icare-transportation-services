@@ -39,6 +39,29 @@ export function validateRadioGroup(name) {
   return !error;
 }
 
+export function validateCheckbox(checkbox) {
+  const label = checkbox.closest('.checkbox-label');
+  let error = '';
+
+  if (checkbox.required && !checkbox.checked) {
+    error = 'This field is required.';
+  }
+
+  if (label) {
+    label.classList.toggle('error', !!error);
+    let msg = label.parentElement.querySelector('.form-message');
+    if (!msg) {
+      msg = document.createElement('span');
+      msg.className = 'form-message error';
+      label.parentElement.appendChild(msg);
+    }
+    msg.textContent = error;
+    msg.style.display = error ? 'block' : 'none';
+  }
+
+  return !error;
+}
+
 export function showFieldError(input, message) {
   input.classList.toggle('error', !!message);
 
@@ -74,6 +97,16 @@ export function setupLiveValidation(form) {
           validateRadioGroup(groupName);
         }
       });
+    });
+  });
+
+  // Setup checkbox validation
+  form.querySelectorAll('input[type="checkbox"][required]').forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      const label = checkbox.closest('.checkbox-label');
+      if (label && label.classList.contains('error')) {
+        validateCheckbox(checkbox);
+      }
     });
   });
 }
